@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLX - Nowoczesne Zaopatrzenie Budowlane</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-dark': '#0a0a0a',
+                        'brand-accent': '#f59e0b', /* Industrialny bursztyn/pomarańcz */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* Stylizacja paska przewijania (Firefox) */
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+        }
+
+        /* Stylizacja paska przewijania (Chrome, Edge, Safari) */
+        ::-webkit-scrollbar {
+            width: 12px; /* Szersza strefa łapania dla myszki */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent; /* Całkowicie przezroczysta szyna */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.4); /* Półprzezroczysty, jasny suwak */
+            border-radius: 10px; /* Zaokrąglenie (pigułka) */
+            border: 3px solid #0a0a0a; /* Obramowanie w kolorze tła - tworzy efekt "odklejenia" od krawędzi i zwężenia suwaka */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(255, 255, 255, 0.6); /* Delikatnie jaśniejszy przy najechaniu, bez zmiany koloru */
+        }
+    </style>
+</head>
+<body class="antialiased bg-white text-black overflow-x-hidden">
+
+    <div id="preloader" class="fixed inset-0 z-[100] flex items-center justify-center bg-white transition-opacity duration-300 pointer-events-none">
+        <img src="logo.png" alt="PLX Logo" class="h-12 w-auto animate-pulse">
+    </div>
+
+    <nav id="navbar" class="fixed z-50 flex justify-center transition-all duration-300 pointer-events-none top-8 w-full px-4">
+        
+        <div id="navbar-inner" class="flex px-6 transition-all pointer-events-auto relative duration-300 bg-black/40 backdrop-blur-[20px] border border-white/10 rounded-full w-[95%] max-w-[1200px] text-white">
+            <div class="flex items-center justify-between w-full h-[60px]">
+                
+                <a href="#" class="relative z-50 flex-shrink-0 flex items-center h-full">
+                    <img src="logo.png" alt="PLX Logo" class="h-8 w-auto object-contain object-left">
+                </a>
+                
+                <div class="hidden md:flex space-x-1 items-center">
+                    <div class="relative group">
+                        <a href="#" class="flex items-center px-4 py-2 rounded-full text-sm transition-all hover:bg-white/10">O nas</a>
+                    </div>
+                    <div class="relative group">
+                        <a href="#" class="flex items-center px-4 py-2 rounded-full text-sm transition-all hover:bg-white/10">Katalog</a>
+                    </div>
+                    <div class="relative group">
+                        <a href="#" class="flex items-center px-4 py-2 rounded-full text-sm transition-all hover:bg-white/10">Sklep B2B</a>
+                    </div>
+                    <div class="relative group">
+                        <a href="#" class="flex items-center px-4 py-2 rounded-full text-sm transition-all hover:bg-white/10">Kontakt</a>
+                    </div>
+                </div>
+
+                <button class="md:hidden flex items-center justify-center p-2 flex-shrink-0 z-50 rounded-md bg-white/5 hover:bg-white/10 border border-white/5 transition-all ml-4" aria-label="Toggle Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative h-screen flex items-center justify-center overflow-hidden z-0">
+        <div id="parallax-bg" class="absolute inset-0 w-full h-full bg-black">
+            <video autoplay loop muted playsinline class="object-cover w-full h-full opacity-100">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            </video>
+            <div id="video-darken-overlay" class="absolute inset-0 bg-black opacity-40"></div>
+        </div>
+        
+        <div id="hero-text" class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+            
+            <h1 id="hero-title" class="text-5xl md:text-7xl font-black tracking-tight mb-6 text-white opacity-0 translate-y-12 blur-md transition-all duration-1000 ease-out">
+                Jakość bez kompromisów.<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-yellow-600">
+                    W każdym detalu.
+                </span>
+            </h1>
+            
+            <p id="hero-desc" class="text-lg md:text-2xl text-gray-300 mb-10 max-w-2xl mx-auto font-light opacity-0 translate-y-12 blur-md transition-all duration-1000 delay-[300ms] ease-out">
+                Kompleksowe zaopatrzenie hurtowni i marketów budowlanych. Odkryj nasze marki: proEKO, proLEX, proLUX.
+            </p>
+            
+            <div id="hero-btns" class="flex flex-col sm:flex-row justify-center gap-4 opacity-0 translate-y-12 transition-all duration-[800ms] delay-[500ms] ease-out">
+                <a href="#" class="px-8 py-4 bg-brand-accent hover:bg-yellow-600 text-black font-bold uppercase tracking-wider transition-colors duration-300">
+                    Zobacz Katalog
+                </a>
+                <a href="#" class="px-8 py-4 bg-transparent border border-white hover:bg-white hover:text-black font-bold uppercase tracking-wider transition-all duration-300 text-white">
+                    Sklep B2B
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="pt-24 pb-20 lg:pt-48 lg:pb-32 bg-[#f9f9f8] relative z-10 shadow-[0_-10px_30px_rgba(0,0,0,0.1)] flex flex-col items-center justify-center text-center">
+        <div id="quote-container" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-20">
+            <h2 class="reveal-item quote-line translate-y-16 transition-transform duration-1000 ease-out text-5xl md:text-7xl lg:text-[5.5rem] font-black tracking-tighter text-gray-900 leading-none opacity-15">
+                Zaopatrzenie to nie tylko logistyka.
+            </h2>
+            <h2 class="reveal-item quote-line translate-y-16 transition-transform duration-1000 delay-100 ease-out text-5xl md:text-7xl lg:text-[5.5rem] font-black tracking-tighter text-gray-900 leading-none opacity-15">
+                To zaufanie, terminowość i partnerstwo.
+            </h2>
+            <h2 class="reveal-item quote-line translate-y-16 transition-transform duration-1000 delay-200 ease-out text-5xl md:text-7xl lg:text-[5.5rem] font-black tracking-tighter text-brand-accent leading-none opacity-15">
+                Gwarancja dobrej ceny.
+            </h2>
+        </div>
+    </section>
+
+    <section class="py-24 bg-[#ffffff] relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-4 text-gray-900">Potencjał, który <span class="text-brand-accent">buduje</span>.</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Zapewniamy kompleksowe zaopatrzenie dla tysięcy punktów w całej Polsce. Pracujemy na faktach i liczbach.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="reveal-item opacity-0 translate-y-16 transition-all duration-1000 delay-100 ease-out">
+                    <div class="bg-white border border-gray-200 p-8 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full">
+                        <div class="text-5xl font-black text-brand-accent mb-4 group-hover:scale-105 transition-transform origin-left">14 000</div>
+                        <div class="text-xl font-bold mb-2 text-gray-900">m² powierzchni</div>
+                        <p class="text-gray-600 text-sm leading-relaxed">Nowoczesnego magazynu, gotowego na szybką realizację każdego zamówienia.</p>
+                    </div>
+                </div>
+                <div class="reveal-item opacity-0 translate-y-16 transition-all duration-1000 delay-200 ease-out">
+                    <div class="bg-white border border-gray-200 p-8 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full">
+                        <div class="text-5xl font-black text-brand-accent mb-4 group-hover:scale-105 transition-transform origin-left">3 000</div>
+                        <div class="text-xl font-bold mb-2 text-gray-900">punktów</div>
+                        <p class="text-gray-600 text-sm leading-relaxed">Handlowych obsługiwanych w całej południowo-zachodniej Polsce.</p>
+                    </div>
+                </div>
+                <div class="reveal-item opacity-0 translate-y-16 transition-all duration-1000 delay-300 ease-out">
+                    <div class="bg-white border border-gray-200 p-8 rounded-2xl hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full">
+                        <div class="text-5xl font-black text-brand-accent mb-4 group-hover:scale-105 transition-transform origin-left">20 000</div>
+                        <div class="text-xl font-bold mb-2 text-gray-900">pozycji</div>
+                        <p class="text-gray-600 text-sm leading-relaxed">Asortymentowych dostępnych od ręki, gotowych do natychmiastowej wysyłki.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-[#f9f9f8] relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-4 text-gray-900">Zapraszamy do <span class="text-brand-accent">współpracy</span>.</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Budujemy trwałe relacje biznesowe. Posiadamy odpowiednie zaplecze logistyczne i sieć dystrybucji, by rozwijać Twój biznes.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <a href="#" class="group relative h-[400px] overflow-hidden rounded-2xl bg-gray-100 flex items-center justify-center p-8">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-10 transition-opacity group-hover:opacity-90"></div>
+                    <div class="absolute inset-0 bg-gray-300 z-0"></div>
+                    <div class="relative z-20 w-full text-center transform transition-transform duration-300 group-hover:-translate-y-2">
+                        <h3 class="text-4xl font-black text-white mb-4 uppercase tracking-wider">Producentów</h3>
+                        <p class="text-gray-200 mb-8 max-w-md mx-auto">Poszukujesz stabilnego partnera do dystrybucji swoich produktów? Docieramy do tysięcy punktów handlowych.</p>
+                        <span class="inline-block px-8 py-3 border border-brand-accent text-brand-accent font-bold uppercase tracking-wider group-hover:bg-brand-accent group-hover:text-black transition-colors duration-300">Zostań dostawcą</span>
+                    </div>
+                </a>
+
+                <a href="#" class="group relative h-[400px] overflow-hidden rounded-2xl bg-gray-100 flex items-center justify-center p-8">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-10 transition-opacity group-hover:opacity-90"></div>
+                    <div class="absolute inset-0 bg-gray-400 z-0"></div>
+                    <div class="relative z-20 w-full text-center transform transition-transform duration-300 group-hover:-translate-y-2">
+                        <h3 class="text-4xl font-black text-white mb-4 uppercase tracking-wider">Importerów</h3>
+                        <p class="text-gray-200 mb-8 max-w-md mx-auto">Szukasz mocnego kanału zbytu dla importowanych towarów? Zapewniamy kompleksową obsługę magazynową.</p>
+                        <span class="inline-block px-8 py-3 border border-brand-accent text-brand-accent font-bold uppercase tracking-wider group-hover:bg-brand-accent group-hover:text-black transition-colors duration-300">Zostań dostawcą</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-[#ffffff] relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-4 text-gray-900">Nasz <span class="text-brand-accent">Asortyment</span>.</h2>
+                    <p class="text-gray-600 max-w-xl text-lg">Kompleksowe wyposażenie w 6 kluczowych kategoriach.</p>
+                </div>
+                <a href="#" class="hidden md:inline-block mt-6 md:mt-0 px-6 py-3 border border-gray-300 hover:border-brand-accent hover:text-brand-accent font-bold uppercase tracking-wider transition-all duration-300 text-sm text-gray-900">
+                    Pełny Katalog
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <a href="#" class="group relative h-80 overflow-hidden rounded-2xl bg-gray-100 flex items-end p-6">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 transition-opacity group-hover:opacity-90"></div>
+                    <div class="absolute inset-0 bg-gray-300 z-0"></div> <div class="relative z-20 w-full transform transition-transform duration-300 group-hover:-translate-y-2">
+                        <h3 class="text-2xl font-bold text-white mb-1">Dział Budowlany</h3>
+                        <p class="text-brand-accent text-sm font-medium uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">Zobacz produkty →</p>
+                    </div>
+                </a>
+
+                <a href="#" class="group relative h-80 overflow-hidden rounded-2xl bg-gray-100 flex items-end p-6">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 transition-opacity group-hover:opacity-90"></div>
+                    <div class="absolute inset-0 bg-gray-400 z-0"></div>
+                    <div class="relative z-20 w-full transform transition-transform duration-300 group-hover:-translate-y-2">
+                        <h3 class="text-2xl font-bold text-white mb-1">Dział Zamocowania</h3>
+                        <p class="text-brand-accent text-sm font-medium uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">Zobacz produkty →</p>
+                    </div>
+                </a>
+
+                <a href="#" class="group relative h-80 overflow-hidden rounded-2xl bg-gray-100 flex items-end p-6">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 transition-opacity group-hover:opacity-90"></div>
+                    <div class="absolute inset-0 bg-gray-300 z-0"></div>
+                    <div class="relative z-20 w-full transform transition-transform duration-300 group-hover:-translate-y-2">
+                        <h3 class="text-2xl font-bold text-white mb-1">Dział Wentylacja</h3>
+                        <p class="text-brand-accent text-sm font-medium uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">Zobacz produkty →</p>
+                    </div>
+                </a>
+
+                <a href="#" class="group relative h-80 overflow-hidden rounded-2xl bg-gray-100 flex items-end p-6">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 transition-opacity group-hover:opacity-90"></div>
+                    <div class="absolute inset-0 bg-gray-400 z-0"></div>
+                    <div class="relative z-20 w-full transform transition-transform duration-300 group-hover:-translate-y-2">
+                        <h3 class="text-2xl font-bold text-white mb-1">Dział Hydraulika</h3>
+                        <p class="text-brand-accent text-sm font-medium uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">Zobacz produkty →</p>
+                    </div>
+                </a>
+
+                <a href="#" class="group relative h-80 overflow-hidden rounded-2xl bg-gray-100 flex items-end p-6">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 transition-opacity group-hover:opacity-90"></div>
+                    <div class="absolute inset-0 bg-gray-300 z-0"></div>
+                    <div class="relative z-20 w-full transform transition-transform duration-300 group-hover:-translate-y-2">
+                        <h3 class="text-2xl font-bold text-white mb-1">Dział Elektryka</h3>
+                        <p class="text-brand-accent text-sm font-medium uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">Zobacz produkty →</p>
+                    </div>
+                </a>
+
+                <a href="#" class="group relative h-80 overflow-hidden rounded-2xl bg-gray-100 flex items-end p-6">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10 transition-opacity group-hover:opacity-90"></div>
+                    <div class="absolute inset-0 bg-gray-400 z-0"></div>
+                    <div class="relative z-20 w-full transform transition-transform duration-300 group-hover:-translate-y-2">
+                        <h3 class="text-2xl font-bold text-white mb-1">Dział Ogród</h3>
+                        <p class="text-brand-accent text-sm font-medium uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300">Zobacz produkty →</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="mt-8 md:hidden text-center">
+                <a href="#" class="inline-block px-6 py-3 border border-gray-300 hover:border-brand-accent hover:text-brand-accent font-bold uppercase tracking-wider transition-all duration-300 text-sm text-gray-900 w-full">
+                    Pełny Katalog
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+
+            // 1. Animacja paska nawigacji
+            const navbar = document.getElementById('navbar');
+            const navbarInner = document.getElementById('navbar-inner'); 
+            
+            if (scrollY > 50) {
+                navbar.classList.remove('top-8');
+                navbar.classList.add('top-4');
+                if (navbarInner) {
+                    navbarInner.classList.remove('bg-black/40', 'backdrop-blur-[20px]');
+                    navbarInner.classList.add('bg-black');
+                }
+            } else {
+                navbar.classList.remove('top-4');
+                navbar.classList.add('top-8');
+                if (navbarInner) {
+                    navbarInner.classList.remove('bg-black');
+                    navbarInner.classList.add('bg-black/40', 'backdrop-blur-[20px]');
+                }
+            }
+
+            // 2. Efekt pełnej paralaksy (najeżdżanie krawędzi przeglądarki z góry i sekcji z dołu)
+            const darkOverlay = document.getElementById('video-darken-overlay');
+            const heroText = document.getElementById('hero-text');
+            const parallaxBg = document.getElementById('parallax-bg'); // Pobieramy wideo
+            
+            if (darkOverlay && heroText && parallaxBg) {
+                let scrollProgress = scrollY / window.innerHeight;
+                if (scrollProgress > 1) scrollProgress = 1;
+
+                // Przyciemniamy tło: zaczynamy od opacity 0.4 i płynnie dodajemy czerń
+                darkOverlay.style.opacity = 0.4 + (scrollProgress * 0.6);
+
+                // KLUCZOWE: Przesuwamy wideo wolniej niż scrolluje się strona (mnożnik 0.5). 
+                parallaxBg.style.transform = `translateY(${scrollY * 0.5}px)`;
+
+                // Usunięto sztuczne zjeżdżanie tekstów. Teraz przyciski i tekst naturalnie wyjadą do góry, 
+                // znikając znacznie szybciej niż tło wideo.
+            }
+
+            // 2.5 Dynamiczna przezroczystość cytatów jako JEDNOŚĆ (rozjaśnia się na środku, zanika po bokach)
+            const quoteContainer = document.getElementById('quote-container');
+            const quoteLines = document.querySelectorAll('.quote-line');
+            const viewHeight = window.innerHeight;
+            const screenCenter = viewHeight / 2;
+
+            if (quoteContainer && quoteLines.length > 0) {
+                const rect = quoteContainer.getBoundingClientRect();
+                // Pobieramy środek całego bloku z tekstami, a nie pojedynczych linijek
+                const elementCenter = rect.top + rect.height / 2;
+                const dist = Math.abs(screenCenter - elementCenter);
+                
+                // Kalkulacja przezroczystości dla całej sekcji naraz
+                const maxDist = viewHeight / 1.5; // Większy dystans, by cały duży blok gasł płynniej
+                let opacity = 1 - (dist / maxDist);
+                
+                if (opacity < 0.15) opacity = 0.15; 
+                if (opacity > 1) opacity = 1;
+                
+                // Przypisanie tej samej, wspólnej wartości do każdej linijki
+                quoteLines.forEach(line => {
+                    line.style.opacity = opacity;
+                });
+            }
+        });
+
+        // 3. Obsługa ekranu ładowania (Preloader) i animacji startowej z blurem
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            // Pobieramy poszczególne elementy zamiast całego bloku
+            const heroTitle = document.getElementById('hero-title');
+            const heroDesc = document.getElementById('hero-desc');
+            const heroBtns = document.getElementById('hero-btns');
+            
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.classList.add('opacity-0');
+                    
+                    // Zdejmujemy klasy startowe. Teksty miały rozmycie, a przyciski już nie.
+                    if (heroTitle && heroDesc && heroBtns) {
+                        [heroTitle, heroDesc].forEach(el => {
+                            el.classList.remove('opacity-0', 'translate-y-12', 'blur-md');
+                            el.classList.add('opacity-100', 'translate-y-0', 'blur-0');
+                        });
+                        
+                        heroBtns.classList.remove('opacity-0', 'translate-y-12');
+                        heroBtns.classList.add('opacity-100', 'translate-y-0');
+                    }
+                    
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 300); 
+                }, 50); 
+            }
+        });
+
+        // 4. Efekt wskakiwania elementów z dołu podczas przewijania
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15 // Animacja startuje, gdy 15% elementu jest widoczne na ekranie
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Element wjeżdża z dołu i staje się w pełni widoczny
+                        entry.target.classList.remove('opacity-0', 'translate-y-16');
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        observer.unobserve(entry.target); // Odpinamy obserwatora - animacja wykonuje się TYLKO RAZ
+                    }
+                });
+            }, observerOptions);
+
+            // Obserwujemy wszystkie elementy z klasą reveal-item
+            const revealElements = document.querySelectorAll('.reveal-item');
+            revealElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
