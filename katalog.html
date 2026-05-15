@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLX — Katalog Produktów</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'brand-dark': '#0a0a0a', 'brand-accent': '#f59e0b' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.3) transparent; }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background-color: rgba(0,0,0,0.18); border-radius: 10px; border: 3px solid #f9f9f8; }
+        ::-webkit-scrollbar-thumb:hover { background-color: rgba(0,0,0,0.35); }
+
+        /* Karta produktu */
+        .product-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+        .product-card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+        .product-card .product-img { transition: transform 0.5s ease; }
+        .product-card:hover .product-img { transform: scale(1.06); }
+
+        /* Sidebar */
+        .subcategory-list { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .subcategory-list.open { max-height: 800px; }
+
+        /* Modal */
+        #modal-backdrop { transition: opacity 0.25s ease; }
+        #modal-box { transition: transform 0.25s ease, opacity 0.25s ease; }
+
+        /* Reveal */
+        .reveal-item { transition: opacity 0.6s ease, transform 0.6s ease; }
+    </style>
+</head>
+<body class="antialiased bg-[#f5f5f3] text-black overflow-x-hidden">
+
+    <!-- PRELOADER -->
+    <div id="preloader" class="fixed inset-0 z-[100] flex items-center justify-center bg-white transition-opacity duration-400 pointer-events-none">
+        <img src="assets/images/logo.png" alt="PLX Logo" class="h-12 w-auto animate-pulse">
+    </div>
+
+    <!-- NAWIGACJA -->
+    <nav id="navbar" class="fixed z-50 flex justify-center transition-all duration-300 pointer-events-none top-6 w-full px-4">
+        <div id="navbar-inner" class="flex px-6 transition-all pointer-events-auto duration-300 bg-black/90 backdrop-blur-xl border border-white/10 rounded-full w-[95%] max-w-[1200px] text-white shadow-xl">
+            <div class="flex items-center justify-between w-full h-[60px]">
+                <a href="PLX.html" class="flex-shrink-0 flex items-center h-full">
+                    <img src="assets/images/logo.png" alt="PLX Logo" class="h-9 w-auto object-contain">
+                </a>
+                <div class="hidden md:flex space-x-1 items-center">
+                    <a href="PLX.html#o-nas"  class="px-4 py-2 rounded-full text-sm transition-all hover:bg-white/10 font-medium">O nas</a>
+                    <a href="katalog.html"     class="px-4 py-2 rounded-full text-sm font-bold text-brand-accent">Katalog</a>
+                    <a href="http://b2b.plx.com.pl" target="_blank" class="px-4 py-2 rounded-full text-sm transition-all hover:bg-white/10 font-medium">Sklep B2B</a>
+                    <a href="PLX.html#kontakt" class="px-4 py-2 rounded-full text-sm transition-all hover:bg-white/10 font-medium">Kontakt</a>
+                    <a href="http://b2b.plx.com.pl" target="_blank" class="ml-2 px-5 py-2 bg-brand-accent hover:bg-yellow-400 text-black text-sm font-bold rounded-full transition-colors">Zamów teraz</a>
+                </div>
+                <button id="hamburger" class="md:hidden flex items-center justify-center p-2 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 transition-all ml-4" aria-label="Menu">
+                    <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+                    <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile dropdown -->
+        <div id="mobile-menu" class="hidden absolute top-[76px] left-4 right-4 bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 text-white pointer-events-auto shadow-2xl opacity-0 -translate-y-2 transition-all duration-250">
+            <div class="flex flex-col gap-1">
+                <a href="PLX.html#o-nas"   class="mobile-link px-4 py-3 rounded-xl hover:bg-white/8 text-sm font-medium">O nas</a>
+                <a href="katalog.html"     class="mobile-link px-4 py-3 rounded-xl bg-white/5 text-sm font-bold text-brand-accent">Katalog produktów</a>
+                <a href="http://b2b.plx.com.pl" target="_blank" class="mobile-link px-4 py-3 rounded-xl hover:bg-white/8 text-sm font-medium">Sklep B2B</a>
+                <a href="PLX.html#kontakt" class="mobile-link px-4 py-3 rounded-xl hover:bg-white/8 text-sm font-medium">Kontakt</a>
+                <div class="mt-2 pt-3 border-t border-white/10">
+                    <a href="http://b2b.plx.com.pl" target="_blank" class="block w-full text-center px-5 py-3 bg-brand-accent hover:bg-yellow-400 text-black text-sm font-bold rounded-full transition-colors">Zamów teraz</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header class="relative pt-36 pb-20 bg-gray-950 overflow-hidden border-b-2 border-brand-accent">
+        <img src="assets/images/header-catalog.png" alt="PLX Katalog" class="absolute inset-0 w-full h-full object-cover opacity-55" style="object-position:50% 65%;">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-brand-accent text-xs font-bold tracking-[0.2em] uppercase mb-4">Pełna oferta PLX</p>
+            <h1 class="text-4xl md:text-6xl font-black tracking-tight text-white leading-tight">
+                Katalog <span class="text-brand-accent">Produktów</span>.
+            </h1>
+            <p class="text-gray-300 mt-5 max-w-2xl text-lg font-light leading-relaxed">
+                Ponad 20 000 pozycji magazynowych w 6 działach dla partnerów B2B. Działy: Budowlany, Zamocowania, Wentylacja, Hydraulika, Elektryka i Ogród.
+            </p>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row gap-8">
+
+        <!-- SIDEBAR -->
+        <aside class="w-full md:w-64 flex-shrink-0">
+            <div class="bg-white rounded-2xl border border-gray-200/80 shadow-sm overflow-hidden sticky top-28">
+                <div class="px-5 py-4 border-b border-gray-100 bg-gray-50/80">
+                    <h3 class="font-black text-sm uppercase tracking-wider text-gray-800">Kategorie</h3>
+                </div>
+
+                <!-- Wyszukiwarka -->
+                <div class="px-5 py-4 border-b border-gray-100">
+                    <div class="relative">
+                        <input type="text" id="catalog-search" placeholder="Szukaj produktu lub kodu..."
+                            class="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-brand-accent focus:ring-2 focus:ring-brand-accent/20 transition-all placeholder-gray-400">
+                        <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Drzewo kategorii -->
+                <div class="py-2" id="category-menu">
+                    <!-- Generowane przez JS -->
+                </div>
+            </div>
+        </aside>
+
+        <!-- GRID PRODUKTÓW -->
+        <div id="product-container" class="flex-1 min-w-0">
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 auto-rows-min">
+                <!-- Generowane przez JS -->
+            </div>
+            <div id="no-results" class="hidden text-center py-20">
+                <div class="text-5xl mb-4">🔍</div>
+                <p class="text-gray-500 font-semibold text-lg">Brak wyników dla podanej frazy</p>
+                <p class="text-gray-400 text-sm mt-2">Spróbuj innej nazwy lub kodu produktu</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL -->
+    <div id="modal-backdrop" class="fixed inset-0 z-[200] hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm opacity-0">
+        <div id="modal-box" class="bg-white rounded-2xl w-full max-w-2xl max-h-[88vh] flex flex-col overflow-hidden shadow-2xl scale-95 opacity-0">
+            <div id="modal-header" class="px-7 py-5 border-b border-gray-100 flex justify-between items-start gap-4 flex-shrink-0 bg-white">
+                <div>
+                    <p id="modal-subtitle" class="text-brand-accent text-xs font-bold tracking-widest uppercase mb-1"></p>
+                    <h2 id="modal-title" class="text-xl font-black text-gray-900 leading-snug"></h2>
+                </div>
+                <button id="modal-close" class="p-2 rounded-xl text-gray-400 hover:text-gray-800 hover:bg-gray-100 transition-all flex-shrink-0 mt-0.5" aria-label="Zamknij">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+            </div>
+            <div id="modal-body" class="p-7 overflow-y-auto flex-1">
+                <!-- wypełniane przez JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="produkty.js"></script>
+    <script>
+        // ── DANE KATEGORII ──────────────────────────────────────────────────
+        const kategorie = [
+            { id: 1, label: 'I. Dział Budowlany', podkategorie: ['1. Drabiny','2. Szpachle, kielnie, pace','3. Narzędzia ścierne','4. Wiertła i narzędzia tnące','5. Młotki, przecinaki, łomy','6. Klucze, szczypce, wkrętaki','7. Dział mierniczy','8. Poziomnice','9. Narzędzia do łączenia','10. Węże techniczne i akcesoria','11. Folie, siatki, tektura, Big Bag','12. Taśmy, uszczelki, moskitiery','13. Artykuły malarskie, wiadra','14. Rusztowania, taczki, koła','15. Wełna i ościeżnice','16. Klamki, kłódki, skrzynki','17. Chemia budowlana','18. Artykuły BHP','19. Garaż i gosp. domowe','20. Elektronarzędzia'] },
+            { id: 2, label: 'II. Zamocowania',    podkategorie: ['21. Gwoździe','22. Nakrętki, podkładki, śruby','23. Kołki, nity, wkręty, kotwy','24. Kątowniki, podstawy słupa','25. Zasuwy, zawiasy, uchwyty','26. Sucha zabudowa','27. Poziomowanie płytek','28. Odbojniki, zaślepki','29. Pasy, łańcuchy, liny'] },
+            { id: 3, label: 'III. Wentylacja',    podkategorie: ['30. Kratki, osłony, maskownice','31. Piece i akcesoria kominiarskie','32. Rury spiro, kanały','33. Wentylatory, grzejniki, rekuperacja'] },
+            { id: 4, label: 'IV. Hydraulika',     podkategorie: ['34. Rury i kształtki PPRC i HDPE','35. Kształtki żeliwne, mosiężne','36. PEX i zawory do wody','37. Baterie i akcesoria','38. Wodomierze, pompy, drenaże','39. Zawory grzejnikowe','40. Uszczelki, zestawy naprawcze','41. Kanalizacja i szambo'] },
+            { id: 5, label: 'V. Elektryka',       podkategorie: ['42. Przedłużacze','43. Wtyczki i rozgałęźniki','44. Rozdzielnice','45. Źródła światła i baterie','46. Przewody i uchwyty kablowe','47. Rury, puszki, złączki','48. Akcesoria elektryczne','49. Systemy odgromowe','50. Gniazdka i włączniki'] },
+            { id: 6, label: 'VI. Ogród',          podkategorie: ['51. Podlewanie i nawadnianie','52. Łopaty, grabie, miotły','53. Żyłki, oleje, kosy, sekatory','54. Agrowłókniny, siatki','55. Obejmy, kosze, odstraszacze','56. Donice i akcesoria IBC','57. Chemia basenowa','58. FISKARS','59. BROS','60. BIOPON','61. Pielęgnacja pupili'] },
+        ];
+
+        let activeCategoryId = null;
+        let activeSubcategoryId = null;
+
+        // ── BUDUJ SIDEBAR ───────────────────────────────────────────────────
+        function buildSidebar() {
+            const menu = document.getElementById('category-menu');
+            menu.innerHTML = kategorie.map(kat => `
+                <div class="category-group border-b border-gray-50 last:border-0">
+                    <button class="cat-toggle w-full flex items-center justify-between px-5 py-3 text-left hover:bg-gray-50 transition-colors group" data-id="${kat.id}">
+                        <span class="text-sm font-bold text-gray-700 group-hover:text-brand-accent transition-colors">${kat.label}</span>
+                        <svg class="w-3.5 h-3.5 text-gray-400 transition-transform flex-shrink-0 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <ul class="subcategory-list px-5 pb-2 space-y-0 bg-gray-50/60">
+                        ${kat.podkategorie.map(p => {
+                            const subId = parseInt(p);
+                            return `<li><a href="#" class="sub-cat-btn block py-1.5 text-xs text-gray-500 hover:text-brand-accent transition-colors" data-cat-id="${kat.id}" data-sub-id="${subId}">${p}</a></li>`;
+                        }).join('')}
+                    </ul>
+                </div>
+            `).join('');
+
+            // Accordion
+            document.querySelectorAll('.cat-toggle').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = parseInt(btn.dataset.id);
+                    const ul = btn.nextElementSibling;
+                    const icon = btn.querySelector('svg');
+                    const isOpen = ul.classList.contains('open');
+
+                    document.querySelectorAll('.subcategory-list').forEach(l => l.classList.remove('open'));
+                    document.querySelectorAll('.cat-toggle svg').forEach(i => i.style.transform = '');
+                    document.querySelectorAll('.cat-toggle span').forEach(s => s.classList.remove('text-brand-accent'));
+                    document.querySelectorAll('.sub-cat-btn').forEach(l => l.classList.remove('text-brand-accent', 'font-bold'));
+
+                    if (!isOpen) {
+                        ul.classList.add('open');
+                        icon.style.transform = 'rotate(180deg)';
+                        btn.querySelector('span').classList.add('text-brand-accent');
+                        activeCategoryId = id;
+                        activeSubcategoryId = null;
+                    } else {
+                        activeCategoryId = null;
+                        activeSubcategoryId = null;
+                    }
+                    filterProducts();
+                });
+            });
+
+            // Kliknięcie w podkategorię
+            document.querySelectorAll('.sub-cat-btn').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.querySelectorAll('.sub-cat-btn').forEach(l => l.classList.remove('text-brand-accent', 'font-bold'));
+                    link.classList.add('text-brand-accent', 'font-bold');
+                    activeCategoryId = parseInt(link.dataset.catId);
+                    activeSubcategoryId = parseInt(link.dataset.subId);
+                    filterProducts();
+                });
+            });
+        }
+
+        // ── BUDUJ KARTY PRODUKTÓW ───────────────────────────────────────────
+        function buildProducts() {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = produktyBaza.map((prod, i) => `
+                <div class="product-card reveal-item opacity-0 translate-y-8 bg-white border border-gray-200/80 rounded-2xl overflow-hidden flex flex-col shadow-sm cursor-pointer"
+                     data-category="${prod.dzial}"
+                     data-subcategory="${prod.podkategoria || ''}"
+                     data-search="${(prod.nazwa + ' ' + prod.tabelaWiersze.map(r=>r.join(' ')).join(' ')).toLowerCase()}"
+                     style="transition-delay:${i * 40}ms"
+                     onclick="openModal('${prod.id}')">
+                    <!-- Zdjęcie -->
+                    <div class="relative h-52 bg-[#f7f7f5] flex items-center justify-center p-5 overflow-hidden">
+                        ${prod.badge ? `<div class="absolute top-3 left-3 bg-brand-accent text-black text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-sm shadow-md z-10">${prod.badge}</div>` : ''}
+                        <img class="product-img w-full h-full object-contain mix-blend-multiply" src="${prod.zdjecie}" alt="${prod.nazwa}" loading="lazy">
+                        <div class="absolute top-3 right-3 bg-white border border-gray-200 text-gray-500 text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm z-10">${prod.wariantyTekst}</div>
+                        ${prod.gabaryt ? `<img src="assets/images/gabaryt.png" alt="Gabaryt" class="absolute bottom-3 right-3 w-9 h-auto opacity-80 mix-blend-multiply z-10" title="Przesyłka gabarytowa">` : ''}
+                    </div>
+                    <!-- Info -->
+                    <div class="p-5 flex-1 flex flex-col">
+                        <h3 class="text-base font-black text-gray-900 leading-snug mb-4 flex-1">${prod.nazwa}</h3>
+                        <button class="w-full py-2.5 bg-gray-900 hover:bg-brand-accent text-white hover:text-black rounded-xl text-sm font-bold transition-all duration-200">
+                            Rozmiary i kody →
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ── FILTROWANIE ─────────────────────────────────────────────────────
+        function filterProducts() {
+            const term = (document.getElementById('catalog-search').value || '').toLowerCase().trim();
+            const cards = document.querySelectorAll('.product-card');
+            let visible = 0;
+
+            cards.forEach(card => {
+                const catMatch = activeCategoryId ? parseInt(card.dataset.category) === activeCategoryId : true;
+                const subMatch = activeSubcategoryId ? parseInt(card.dataset.subcategory) === activeSubcategoryId : true;
+                const searchWords = term.split(' ').filter(w => w.length > 0);
+                const textMatch = searchWords.length === 0 ? true : searchWords.every(word => card.dataset.search.includes(word));
+                const show = catMatch && subMatch && textMatch;
+                card.style.display = show ? 'flex' : 'none';
+                if (show) visible++;
+            });
+
+            document.getElementById('no-results').classList.toggle('hidden', visible > 0);
+        }
+
+        // ── MODAL ───────────────────────────────────────────────────────────
+        function openModal(prodId) {
+            const prod = produktyBaza.find(p => p.id === prodId);
+            if (!prod) return;
+
+            const badgeHtml = prod.badge ? `<span class="inline-block bg-brand-accent text-black text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-sm ml-2 align-middle">${prod.badge}</span>` : '';
+            document.getElementById('modal-subtitle').innerHTML = `Dział ${prod.dzial} &middot; ${prod.wariantyTekst} ${badgeHtml}`;
+            document.getElementById('modal-title').textContent = prod.nazwa;
+
+            const punkty = prod.opisLista.map(p => `
+                <li class="flex items-start gap-2 text-sm text-gray-600">
+                    <span class="text-brand-accent font-bold mt-0.5 flex-shrink-0">✓</span>
+                    <span>${p}</span>
+                </li>
+            `).join('');
+
+            const headers = prod.tabelaNaglowki.map((h, i) =>
+                `<th class="px-5 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider ${i>0?'text-center':''}">${h}</th>`
+            ).join('');
+
+            const rows = prod.tabelaWiersze.map(row => {
+                if (row[1] === '') {
+                    return `<tr><td colspan="2" class="px-5 py-2 text-center text-xs font-black text-amber-600 uppercase tracking-wider bg-amber-50 border-y border-amber-100">${row[0]}</td></tr>`;
+                }
+                return `<tr class="hover:bg-gray-50 transition-colors">
+                    ${row.map((cell, i) => `<td class="px-5 py-3 text-sm ${i===0?'font-semibold text-gray-900':'text-center text-gray-600'} border-b border-gray-50">${cell}</td>`).join('')}
+                </tr>`;
+            }).join('');
+
+            const legendaHtml = prod.legenda ? `<div class="mt-6 p-4 bg-gray-50 rounded-xl border border-gray-200"><p class="text-brand-accent text-xs font-bold tracking-widest uppercase mb-2">Legenda:</p><ul class="text-xs text-gray-600 space-y-1">${prod.legenda.map(l => `<li><strong class="text-gray-900">${l.split(' – ')[0]}</strong> – ${l.split(' – ')[1]}</li>`).join('')}</ul></div>` : '';
+            const gabarytHtml = prod.gabaryt ? `<div class="mt-4 flex items-center gap-3 text-red-600 font-bold text-xs uppercase tracking-wider bg-red-50 p-3 rounded-xl border border-red-100 w-max"><img src="assets/images/gabaryt.png" alt="Gabaryt" class="h-8 w-auto mix-blend-multiply"><span>Przesyłka gabarytowa</span></div>` : '';
+
+            document.getElementById('modal-body').innerHTML = `
+                <ul class="space-y-2 mb-6">${punkty}</ul>
+                <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                    <table class="w-full text-left">
+                        <thead class="bg-gray-50 border-b border-gray-200"><tr>${headers}</tr></thead>
+                        <tbody>${rows}</tbody>
+                    </table>
+                </div>
+                ${legendaHtml}
+                ${gabarytHtml}
+            `;
+
+            const backdrop = document.getElementById('modal-backdrop');
+            const box = document.getElementById('modal-box');
+            backdrop.classList.remove('hidden');
+            backdrop.classList.add('flex');
+            requestAnimationFrame(() => {
+                backdrop.style.opacity = '1';
+                box.style.opacity = '1';
+                box.style.transform = 'scale(1)';
+            });
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const backdrop = document.getElementById('modal-backdrop');
+            const box = document.getElementById('modal-box');
+            backdrop.style.opacity = '0';
+            box.style.opacity = '0';
+            box.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                backdrop.classList.add('hidden');
+                backdrop.classList.remove('flex');
+                document.body.style.overflow = '';
+            }, 260);
+        }
+
+        document.getElementById('modal-close').addEventListener('click', closeModal);
+        document.getElementById('modal-backdrop').addEventListener('click', e => {
+            if (e.target === e.currentTarget) closeModal();
+        });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+        // ── INIT ─────────────────────────────────────────────────────────────
+        buildSidebar();
+        buildProducts();
+
+        document.getElementById('catalog-search').addEventListener('input', filterProducts);
+
+        // SCROLL — navbar shrink
+        window.addEventListener('scroll', function () {
+            const nb = document.getElementById('navbar');
+            nb.style.top = window.scrollY > 60 ? '12px' : '24px';
+        });
+
+        // PRELOADER
+        window.addEventListener('load', function () {
+            const pre = document.getElementById('preloader');
+            setTimeout(() => {
+                if (pre) { pre.classList.add('opacity-0'); setTimeout(() => pre.style.display='none', 400); }
+            }, 60);
+        });
+
+        // INTERSECTION OBSERVER — reveal cards
+        document.addEventListener('DOMContentLoaded', function () {
+            const obs = new IntersectionObserver((entries, o) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.remove('opacity-0', 'translate-y-8');
+                        e.target.classList.add('opacity-100', 'translate-y-0');
+                        o.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.08 });
+            document.querySelectorAll('.reveal-item').forEach(el => obs.observe(el));
+        });
+
+        // MOBILE MENU
+        const ham = document.getElementById('hamburger');
+        const mm = document.getElementById('mobile-menu');
+        const io = document.getElementById('icon-open');
+        const ic = document.getElementById('icon-close');
+        let open = false;
+        ham && ham.addEventListener('click', () => {
+            open = !open;
+            if (open) {
+                mm.classList.remove('hidden');
+                requestAnimationFrame(() => { mm.style.opacity='1'; mm.style.transform='translateY(0)'; });
+                io.classList.add('hidden'); ic.classList.remove('hidden');
+            } else {
+                mm.style.opacity='0'; mm.style.transform='translateY(-8px)';
+                setTimeout(() => mm.classList.add('hidden'), 250);
+                io.classList.remove('hidden'); ic.classList.add('hidden');
+            }
+        });
+        document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => {
+            open = false; mm.style.opacity='0'; mm.style.transform='translateY(-8px)';
+            setTimeout(() => mm.classList.add('hidden'), 250);
+            io.classList.remove('hidden'); ic.classList.add('hidden');
+        }));
+
+        // PAGE TRANSITIONS
+        document.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', function (e) {
+                const h = this.getAttribute('href');
+                if (h && h !== '#' && !h.startsWith('http') && !h.startsWith('mailto') && !h.startsWith('tel') && !h.startsWith('#') && this.target !== '_blank') {
+                    e.preventDefault();
+                    const pre = document.getElementById('preloader');
+                    if (pre) { pre.style.display='flex'; pre.style.opacity='1'; pre.classList.remove('opacity-0'); }
+                    setTimeout(() => window.location.href = h, 350);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLX GRUPA — Nowoczesne Zaopatrzenie Budowlane</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'brand-dark': '#0a0a0a', 'brand-accent': '#f59e0b' },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.3) transparent; }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background-color: rgba(255,255,255,0.25); border-radius: 10px; border: 3px solid #0a0a0a; }
+        ::-webkit-scrollbar-thumb:hover { background-color: rgba(255,255,255,0.45); }
+        #hero-title, #hero-desc, #hero-btns, #hero-eyebrow { transition-property: opacity, transform, filter; }
+        .quote-line { will-change: opacity; transition: opacity 0.15s linear; }
+        .section-divider { height: 1px; background: linear-gradient(to right, transparent, rgba(245,158,11,0.3), transparent); }
+        .dzial-card .card-hint { transition: opacity 0.25s ease; opacity: 0; }
+        .dzial-card:hover .card-hint { opacity: 1; }
+        .dzial-card .card-inner { transition: transform 0.3s ease; }
+        .dzial-card:hover .card-inner { transform: translateY(-4px); }
+        input, textarea { color-scheme: dark; }
+    </style>
+</head>
+<body class="antialiased bg-white text-black overflow-x-hidden">
+
+    <!-- PRELOADER -->
+    <div id="preloader" class="fixed inset-0 z-[100] flex items-center justify-center bg-black transition-opacity duration-500 pointer-events-none">
+        <img src="assets/images/logo.png" alt="PLX Logo" class="h-14 w-auto animate-pulse">
+    </div>
+
+    <!-- NAWIGACJA -->
+    <nav id="navbar" class="fixed z-50 flex justify-center transition-all duration-300 pointer-events-none top-6 w-full px-4">
+        <div id="navbar-inner" class="flex px-6 transition-all pointer-events-auto relative duration-300 bg-black/50 backdrop-blur-xl border border-white/10 rounded-full w-[95%] max-w-[1200px] text-white shadow-lg">
+            <div class="flex items-center justify-between w-full h-[60px]">
+                <a href="PLX.html" class="flex-shrink-0 flex items-center h-full">
+                    <img src="assets/images/logo.png" alt="PLX Logo" class="h-9 w-auto object-contain">
+                </a>
+                <div class="hidden md:flex space-x-1 items-center">
+                    <a href="#o-nas"    class="px-4 py-2 rounded-full text-sm transition-all hover:bg-white/10 font-medium">O nas</a>
+                    <a href="katalog.html" class="px-4 py-2 rounded-full text-sm transition-all hover:bg-white/10 font-medium">Katalog</a>
+                    <a href="http://b2b.plx.com.pl" target="_blank" class="px-4 py-2 rounded-full text-sm transition-all hover:bg-white/10 font-medium">Sklep B2B</a>
+                    <a href="#kontakt"  class="px-4 py-2 rounded-full text-sm transition-all hover:bg-white/10 font-medium">Kontakt</a>
+                    <a href="http://b2b.plx.com.pl" target="_blank" class="ml-2 px-5 py-2 bg-brand-accent hover:bg-yellow-400 text-black text-sm font-bold rounded-full transition-colors">Zamów teraz</a>
+                </div>
+                <button id="hamburger" class="md:hidden flex items-center justify-center p-2 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 transition-all ml-4" aria-label="Menu">
+                    <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+    <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile dropdown -->
+        <div id="mobile-menu" class="hidden absolute top-[76px] left-4 right-4 bg-black/95 backdrop-blur-xl border border-white/10 rounded-2xl p-5 text-white pointer-events-auto shadow-2xl opacity-0 -translate-y-2 transition-all duration-250">
+            <div class="flex flex-col gap-1">
+                <a href="#o-nas"   class="mobile-link px-4 py-3 rounded-xl hover:bg-white/8 text-sm font-medium">O nas</a>
+                <a href="katalog.html" class="mobile-link px-4 py-3 rounded-xl hover:bg-white/8 text-sm font-medium">Katalog produktów</a>
+                <a href="http://b2b.plx.com.pl" target="_blank" class="mobile-link px-4 py-3 rounded-xl hover:bg-white/8 text-sm font-medium">Sklep B2B</a>
+                <a href="#kontakt" class="mobile-link px-4 py-3 rounded-xl hover:bg-white/8 text-sm font-medium">Kontakt</a>
+                <div class="mt-2 pt-3 border-t border-white/10">
+                    <a href="http://b2b.plx.com.pl" target="_blank" class="block w-full text-center px-5 py-3 bg-brand-accent hover:bg-yellow-400 text-black text-sm font-bold rounded-full transition-colors">Zamów teraz</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden z-0">
+        <div id="parallax-bg" class="absolute inset-0 bg-black">
+            <img src="assets/images/header-catalog.png" alt="PLX Magazyn" class="object-cover w-full h-full opacity-70" style="object-position:50% 65%;">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/25 via-black/40 to-black/75"></div>
+        </div>
+        <div id="hero-text" class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+            <p id="hero-eyebrow" class="text-brand-accent text-xs sm:text-sm font-bold tracking-[0.25em] uppercase mb-5 opacity-0 translate-y-5 transition-all duration-700">
+                Hurtownia budowlana · od 1997 roku · Opole
+            </p>
+            <h1 id="hero-title" class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight mb-7 text-white opacity-0 translate-y-10 blur-sm transition-all duration-1000 ease-out leading-[1.05]">
+                Jakość bez kompromisów.<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-amber-500">W każdym detalu.</span>
+            </h1>
+            <p id="hero-desc" class="text-base sm:text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto font-light opacity-0 translate-y-10 blur-sm transition-all duration-1000 delay-[250ms] ease-out leading-relaxed">
+                Kompleksowe zaopatrzenie hurtowni i marketów budowlanych.<br class="hidden sm:block">
+                Własne marki: <span class="text-white font-medium">proEKO</span>, <span class="text-white font-medium">proLEX</span>, <span class="text-white font-medium">proLUX</span>.
+            </p>
+            <div id="hero-btns" class="flex flex-col sm:flex-row justify-center gap-4 opacity-0 translate-y-8 transition-all duration-700 delay-[450ms]">
+                <a href="katalog.html" class="px-8 py-4 bg-brand-accent hover:bg-yellow-400 text-black font-bold uppercase tracking-wider transition-all duration-200 rounded-sm text-sm shadow-lg shadow-amber-500/20">Przeglądaj Katalog</a>
+                <a href="http://b2b.plx.com.pl" target="_blank" class="px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/25 hover:bg-white/20 text-white font-bold uppercase tracking-wider transition-all duration-200 rounded-sm text-sm">Sklep B2B</a>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce opacity-40 hover:opacity-100 transition-opacity cursor-pointer p-2" onclick="document.getElementById('quote-container').scrollIntoView({behavior: 'smooth', block: 'center'})">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section class="pt-24 pb-20 lg:pt-44 lg:pb-36 bg-[#f9f9f8] relative z-10 shadow-[0_-20px_60px_rgba(0,0,0,0.1)] overflow-hidden">
+        <div id="quote-container" class="max-w-6xl mx-auto px-6 lg:px-8 flex flex-col gap-8 md:gap-14 text-center">
+            <h2 class="quote-line text-3xl sm:text-4xl md:text-5xl lg:text-[4.8rem] font-black tracking-tighter text-gray-900 leading-none opacity-15">Zaopatrzenie to nie tylko logistyka.</h2>
+            <h2 class="quote-line text-3xl sm:text-4xl md:text-5xl lg:text-[4.8rem] font-black tracking-tighter text-gray-900 leading-none opacity-15">To zaufanie, terminowość i partnerstwo.</h2>
+            <h2 class="quote-line text-3xl sm:text-4xl md:text-5xl lg:text-[4.8rem] font-black tracking-tighter text-brand-accent leading-none opacity-15">Gwarancja dobrej ceny.</h2>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- STATYSTYKI -->
+    <section class="py-24 bg-white relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14">
+                <p class="text-brand-accent text-xs font-bold tracking-[0.2em] uppercase mb-3">Fakty i liczby</p>
+                <h2 class="text-3xl md:text-5xl font-black tracking-tight text-gray-900">Potencjał, który <span class="text-brand-accent">buduje</span>.</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-[100ms]">
+                    <div class="border border-gray-100 p-10 rounded-2xl hover:shadow-xl hover:border-brand-accent/25 hover:-translate-y-1 transition-all duration-300 group text-center h-full">
+                        <div class="text-6xl font-black text-brand-accent mb-3 group-hover:scale-105 transition-transform">14 000</div>
+                        <div class="text-lg font-bold mb-2 text-gray-900">m² powierzchni</div>
+                        <p class="text-gray-500 text-sm leading-relaxed">Nowoczesny magazyn gotowy na szybką realizację każdego zamówienia.</p>
+                    </div>
+                </div>
+                <div class="reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-[200ms]">
+                    <div class="border border-gray-100 p-10 rounded-2xl hover:shadow-xl hover:border-brand-accent/25 hover:-translate-y-1 transition-all duration-300 group text-center h-full">
+                        <div class="text-6xl font-black text-brand-accent mb-3 group-hover:scale-105 transition-transform">3 000</div>
+                        <div class="text-lg font-bold mb-2 text-gray-900">punktów handlowych</div>
+                        <p class="text-gray-500 text-sm leading-relaxed">Aktywnie obsługiwanych w całej południowo-zachodniej Polsce.</p>
+                    </div>
+                </div>
+                <div class="reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-[300ms]">
+                    <div class="border border-gray-100 p-10 rounded-2xl hover:shadow-xl hover:border-brand-accent/25 hover:-translate-y-1 transition-all duration-300 group text-center h-full">
+                        <div class="text-6xl font-black text-brand-accent mb-3 group-hover:scale-105 transition-transform">20 000</div>
+                        <div class="text-lg font-bold mb-2 text-gray-900">pozycji magazynowych</div>
+                        <p class="text-gray-500 text-sm leading-relaxed">Dostępnych od ręki, gotowych do natychmiastowej wysyłki do klienta.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- WSPÓŁPRACA -->
+    <section class="py-24 bg-[#f9f9f8] relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14">
+                <p class="text-brand-accent text-xs font-bold tracking-[0.2em] uppercase mb-3">Partnerstwo</p>
+                <h2 class="text-3xl md:text-5xl font-black tracking-tight text-gray-900">Zapraszamy do <span class="text-brand-accent">współpracy</span>.</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto text-lg mt-4 font-light">Budujemy trwałe relacje biznesowe z producentami i importerami.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-[100ms] group relative h-[400px] overflow-hidden rounded-2xl bg-gray-900 flex items-center justify-center p-8 cursor-pointer">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/85 z-10 group-hover:opacity-95 transition-opacity"></div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-gray-700 to-gray-900 z-0 flex items-center justify-center"><span class="text-[10rem] opacity-8 select-none">🏭</span></div>
+                    <div class="relative z-20 w-full text-center transform group-hover:-translate-y-3 transition-transform duration-300">
+                        <div class="inline-block px-3 py-1 bg-brand-accent/20 border border-brand-accent/40 text-brand-accent text-xs font-bold uppercase tracking-widest rounded-full mb-5">Producenci</div>
+                        <h3 class="text-4xl font-black text-white mb-4 uppercase tracking-wide leading-tight">Dystrybuuj<br>z nami</h3>
+                        <p class="text-gray-300 mb-8 max-w-sm mx-auto text-sm leading-relaxed font-light">Stabilny partner do dystrybucji Twoich produktów. Docieramy do tysięcy punktów handlowych.</p>
+                        <span class="inline-block px-7 py-3 border border-brand-accent text-brand-accent text-sm font-bold uppercase tracking-wider group-hover:bg-brand-accent group-hover:text-black transition-all duration-300 rounded-sm">Zostań dostawcą →</span>
+                    </div>
+                </div>
+                <div class="reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-[200ms] group relative h-[400px] overflow-hidden rounded-2xl bg-gray-900 flex items-center justify-center p-8 cursor-pointer">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/85 z-10 group-hover:opacity-95 transition-opacity"></div>
+                    <div class="absolute inset-0 bg-gradient-to-br from-gray-600 to-gray-900 z-0 flex items-center justify-center"><span class="text-[10rem] opacity-8 select-none">🌍</span></div>
+                    <div class="relative z-20 w-full text-center transform group-hover:-translate-y-3 transition-transform duration-300">
+                        <div class="inline-block px-3 py-1 bg-brand-accent/20 border border-brand-accent/40 text-brand-accent text-xs font-bold uppercase tracking-widest rounded-full mb-5">Importerzy</div>
+                        <h3 class="text-4xl font-black text-white mb-4 uppercase tracking-wide leading-tight">Zbyj swoje<br>produkty</h3>
+                        <p class="text-gray-300 mb-8 max-w-sm mx-auto text-sm leading-relaxed font-light">Mocny kanał zbytu dla importowanych towarów. Kompleksowa obsługa magazynowa i dystrybucja.</p>
+                        <span class="inline-block px-7 py-3 border border-brand-accent text-brand-accent text-sm font-bold uppercase tracking-wider group-hover:bg-brand-accent group-hover:text-black transition-all duration-300 rounded-sm">Zostań dostawcą →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ASORTYMENT -->
+    <section class="py-24 bg-white relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-14">
+                <div>
+                    <p class="text-brand-accent text-xs font-bold tracking-[0.2em] uppercase mb-3">Pełna oferta</p>
+                    <h2 class="text-3xl md:text-5xl font-black tracking-tight text-gray-900">Nasz <span class="text-brand-accent">Asortyment</span>.</h2>
+                    <p class="text-gray-500 max-w-xl text-lg mt-3 font-light">Kompleksowe wyposażenie w 6 kluczowych kategoriach.</p>
+                </div>
+                <a href="katalog.html" class="hidden md:inline-flex items-center gap-2 mt-6 md:mt-0 px-6 py-3 border border-gray-200 hover:border-brand-accent hover:text-brand-accent font-bold uppercase tracking-wider transition-all text-sm text-gray-600 rounded-sm group">
+                    Pełny Katalog <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- każda karta -->
+                <a href="katalog.html" class="dzial-card reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-[50ms] group relative h-72 overflow-hidden rounded-2xl flex items-end p-6 bg-gray-900">
+                    <div class="absolute inset-0 z-0 bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center"><span class="text-[7rem] opacity-10 select-none">🏗️</span></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent z-10"></div>
+                    <div class="card-inner relative z-20 w-full">
+                        <p class="text-brand-accent text-xs font-bold tracking-widest uppercase mb-1">Dział I</p>
+                        <h3 class="text-2xl font-black text-white">Budowlany</h3>
+                        <p class="card-hint text-brand-accent text-xs font-semibold uppercase tracking-widest mt-2 flex items-center gap-1">Zobacz produkty →</p>
+                    </div>
+                </a>
+                <a href="katalog.html" class="dzial-card reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-[100ms] group relative h-72 overflow-hidden rounded-2xl flex items-end p-6 bg-gray-900">
+                    <div class="absolute inset-0 z-0 bg-gradient-to-br from-zinc-700 to-zinc-900 flex items-center justify-center"><span class="text-[7rem] opacity-10 select-none">🔩</span></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent z-10"></div>
+                    <div class="card-inner relative z-20 w-full">
+                        <p class="text-brand-accent text-xs font-bold tracking-widest uppercase mb-1">Dział II</p>
+                        <h3 class="text-2xl font-black text-white">Zamocowania</h3>
+                        <p class="card-hint text-brand-accent text-xs font-semibold uppercase tracking-widest mt-2">Zobacz produkty →</p>
+                    </div>
+                </a>
+                <a href="katalog.html" class="dzial-card reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-[150ms] group relative h-72 overflow-hidden rounded-2xl flex items-end p-6 bg-gray-900">
+                    <div class="absolute inset-0 z-0 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center"><span class="text-[7rem] opacity-10 select-none">💨</span></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent z-10"></div>
+                    <div class="card-inner relative z-20 w-full">
+                        <p class="text-brand-accent text-xs font-bold tracking-widest uppercase mb-1">Dział III</p>
+                        <h3 class="text-2xl font-black text-white">Wentylacja</h3>
+                        <p class="card-hint text-brand-accent text-xs font-semibold uppercase tracking-widest mt-2">Zobacz produkty →</p>
+                    </div>
+                </a>
+                <a href="katalog.html" class="dzial-card reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-[200ms] group relative h-72 overflow-hidden rounded-2xl flex items-end p-6 bg-gray-900">
+                    <div class="absolute inset-0 z-0 bg-gradient-to-br from-blue-900 to-slate-900 flex items-center justify-center"><span class="text-[7rem] opacity-10 select-none">🔧</span></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent z-10"></div>
+                    <div class="card-inner relative z-20 w-full">
+                        <p class="text-brand-accent text-xs font-bold tracking-widest uppercase mb-1">Dział IV</p>
+                        <h3 class="text-2xl font-black text-white">Hydraulika</h3>
+                        <p class="card-hint text-brand-accent text-xs font-semibold uppercase tracking-widest mt-2">Zobacz produkty →</p>
+                    </div>
+                </a>
+                <a href="katalog.html" class="dzial-card reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-[250ms] group relative h-72 overflow-hidden rounded-2xl flex items-end p-6 bg-gray-900">
+                    <div class="absolute inset-0 z-0 bg-gradient-to-br from-yellow-900 to-gray-900 flex items-center justify-center"><span class="text-[7rem] opacity-10 select-none">⚡</span></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent z-10"></div>
+                    <div class="card-inner relative z-20 w-full">
+                        <p class="text-brand-accent text-xs font-bold tracking-widest uppercase mb-1">Dział V</p>
+                        <h3 class="text-2xl font-black text-white">Elektryka</h3>
+                        <p class="card-hint text-brand-accent text-xs font-semibold uppercase tracking-widest mt-2">Zobacz produkty →</p>
+                    </div>
+                </a>
+                <a href="katalog.html" class="dzial-card reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-[300ms] group relative h-72 overflow-hidden rounded-2xl flex items-end p-6 bg-gray-900">
+                    <div class="absolute inset-0 z-0 bg-gradient-to-br from-green-900 to-gray-900 flex items-center justify-center"><span class="text-[7rem] opacity-10 select-none">🌿</span></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent z-10"></div>
+                    <div class="card-inner relative z-20 w-full">
+                        <p class="text-brand-accent text-xs font-bold tracking-widest uppercase mb-1">Dział VI</p>
+                        <h3 class="text-2xl font-black text-white">Ogród</h3>
+                        <p class="card-hint text-brand-accent text-xs font-semibold uppercase tracking-widest mt-2">Zobacz produkty →</p>
+                    </div>
+                </a>
+            </div>
+            <div class="mt-8 md:hidden">
+                <a href="katalog.html" class="flex items-center justify-center gap-2 px-6 py-4 border border-gray-200 hover:border-brand-accent hover:text-brand-accent font-bold uppercase tracking-wider text-sm text-gray-600 rounded-sm w-full transition-all">Pełny Katalog →</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- O NAS -->
+    <section id="o-nas" class="py-24 bg-[#f9f9f8] relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal-item opacity-0 translate-y-10 transition-all duration-700">
+                    <p class="text-brand-accent text-xs font-bold tracking-[0.2em] uppercase mb-3">O firmie</p>
+                    <h2 class="text-3xl md:text-5xl font-black tracking-tight text-gray-900 mb-7 leading-tight">Zbudowani na <span class="text-brand-accent">doświadczeniu</span>.</h2>
+                    <p class="text-gray-600 text-lg mb-5 leading-relaxed font-light">PLX to firma z <strong class="text-gray-900 font-semibold">ponad 25-letnim doświadczeniem</strong> na rynku budowlanym, działająca od 1997 roku. Specjalizujemy się w kompleksowym zaopatrzeniu hurtowni i marketów budowlanych w południowo-zachodniej Polsce.</p>
+                    <p class="text-gray-600 text-lg mb-8 leading-relaxed font-light">Stworzyliśmy własne marki — <strong class="text-gray-900 font-semibold">proEKO, proLEX i proLUX</strong> — łącząc wysoką jakość z konkurencyjną ceną dla naszych partnerów biznesowych.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700">✓ Od 1997 roku</span>
+                        <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700">✓ 3 marki własne</span>
+                        <span class="px-4 py-2 bg-white border border-gray-200 rounded-full text-sm font-semibold text-gray-700">✓ Gwarancja dobrej ceny</span>
+                    </div>
+                </div>
+                <div class="reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-[150ms] space-y-4">
+                    <div class="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-green-200 transition-all duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-green-50 flex items-center justify-center text-2xl flex-shrink-0">🌱</div>
+                            <div><div class="font-black text-xl text-green-700 tracking-wide">proEKO</div><div class="text-gray-500 text-sm mt-0.5">Seria ekologiczna — dla środowiska i użytkownika</div></div>
+                        </div>
+                    </div>
+                    <div class="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-amber-200 transition-all duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center text-2xl flex-shrink-0">⭐</div>
+                            <div><div class="font-black text-xl text-amber-700 tracking-wide">proLEX</div><div class="text-gray-500 text-sm mt-0.5">Seria premium — najwyższa jakość w każdym detalu</div></div>
+                        </div>
+                    </div>
+                    <div class="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-blue-200 transition-all duration-300">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-2xl flex-shrink-0">💎</div>
+                            <div><div class="font-black text-xl text-blue-700 tracking-wide">proLUX</div><div class="text-gray-500 text-sm mt-0.5">Seria lux — elegancja i trwałość w jednym</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- KONTAKT -->
+    <section id="kontakt" class="py-24 bg-black relative z-10 overflow-hidden">
+        <div class="absolute inset-0 opacity-[0.04]" style="background-image:radial-gradient(circle at 15% 50%,#f59e0b 0%,transparent 55%),radial-gradient(circle at 85% 50%,#f59e0b 0%,transparent 55%);"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-14">
+                <p class="text-brand-accent text-xs font-bold tracking-[0.2em] uppercase mb-3">Porozmawiajmy</p>
+                <h2 class="text-3xl md:text-5xl font-black tracking-tight text-white mb-4">Skontaktuj się <span class="text-brand-accent">z nami</span>.</h2>
+                <p class="text-gray-400 text-lg font-light">Zapraszamy producentów i importerów do nawiązania współpracy.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+                <!-- Dane -->
+                <div class="reveal-item opacity-0 translate-y-10 transition-all duration-700 lg:col-span-2 space-y-4">
+                    <div class="border border-white/10 rounded-2xl p-6 hover:border-brand-accent/35 transition-colors">
+                        <p class="text-brand-accent text-xs font-bold tracking-widest uppercase mb-1">BOK</p>
+                        <a href="tel:668380301" class="text-white text-3xl font-black hover:text-brand-accent transition-colors block">668 380 301</a>
+                    </div>
+                    <div class="border border-white/10 rounded-2xl p-6 hover:border-brand-accent/35 transition-colors">
+                        <p class="text-gray-500 text-xs font-bold tracking-widest uppercase mb-1">Telefon</p>
+                        <a href="tel:731305500" class="text-white text-3xl font-black hover:text-brand-accent transition-colors block">731 305 500</a>
+                    </div>
+                    <div class="border border-white/10 rounded-2xl p-6 hover:border-brand-accent/35 transition-colors">
+                        <p class="text-gray-500 text-xs font-bold tracking-widest uppercase mb-1">E-mail</p>
+                        <a href="mailto:zamowienia@plx.com.pl" class="text-white text-lg font-bold hover:text-brand-accent transition-colors">zamowienia@plx.com.pl</a>
+                    </div>
+                    <div class="border border-white/10 rounded-2xl p-6 hover:border-brand-accent/35 transition-colors">
+                        <p class="text-gray-500 text-xs font-bold tracking-widest uppercase mb-1">Adres</p>
+                        <p class="text-white text-lg font-semibold">ul. Głogowska 39</p>
+                        <p class="text-gray-400 text-sm mt-1">45-315 Opole</p>
+                    </div>
+                </div>
+                <!-- Formularz -->
+                <div class="reveal-item opacity-0 translate-y-10 transition-all duration-700 delay-[150ms] lg:col-span-3">
+                    <div class="border border-white/10 rounded-2xl p-8">
+                        <h3 class="text-white font-black text-xl mb-6">Napisz do nas</h3>
+                        <form class="space-y-4" onsubmit="event.preventDefault(); const btn = this.querySelector('button[type=submit]'); const oldText = btn.innerText; btn.innerText = 'Wysłano pomyślnie!'; btn.classList.remove('bg-brand-accent', 'hover:bg-yellow-400', 'text-black'); btn.classList.add('bg-green-500', 'text-white'); setTimeout(() => { btn.innerText = oldText; btn.classList.remove('bg-green-500', 'text-white'); btn.classList.add('bg-brand-accent', 'hover:bg-yellow-400', 'text-black'); this.reset(); }, 3000);">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <input type="text" placeholder="Imię i nazwisko" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-brand-accent transition-colors">
+                                <input type="text" placeholder="Nazwa firmy" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-brand-accent transition-colors">
+                            </div>
+                            <input type="email" placeholder="Adres e-mail *" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-brand-accent transition-colors">
+                            <input type="tel" placeholder="Telefon kontaktowy" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-brand-accent transition-colors">
+                            <textarea placeholder="Treść wiadomości..." rows="5" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 text-sm focus:outline-none focus:border-brand-accent transition-colors resize-none"></textarea>
+                            <button type="submit" class="w-full py-4 bg-brand-accent hover:bg-yellow-400 text-black font-bold uppercase tracking-wider text-sm rounded-xl transition-colors shadow-lg shadow-amber-500/15">Wyślij wiadomość</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-white/5 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-4">
+                <img src="assets/images/logo.png" alt="PLX Logo" class="h-8 w-auto opacity-80">
+                <div>
+                    <p class="text-white/35 text-xs">ul. Głogowska 39, 45-315 Opole</p>
+                    <p class="text-white/35 text-xs mt-0.5">zamowienia@plx.com.pl · 668 380 301</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-6 text-xs text-white/20">
+                <span>proEKO · proLEX · proLUX</span>
+                <span>© 2025 PLX GRUPA</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // SCROLL
+        window.addEventListener('scroll', function () {
+            const sy = window.scrollY;
+            const nb = document.getElementById('navbar');
+            const ni = document.getElementById('navbar-inner');
+            if (sy > 60) {
+                nb.style.top = '12px';
+                ni && (ni.style.background = 'rgba(0,0,0,0.92)');
+            } else {
+                nb.style.top = '24px';
+                ni && (ni.style.background = 'rgba(0,0,0,0.50)');
+            }
+            // Parallax
+            const pb = document.getElementById('parallax-bg');
+            if (pb) pb.style.transform = `translateY(${sy * 0.45}px)`;
+            // Quotes
+            const qc = document.getElementById('quote-container');
+            const ql = document.querySelectorAll('.quote-line');
+            if (qc && ql.length) {
+                const r = qc.getBoundingClientRect();
+                const dist = Math.abs(window.innerHeight / 2 - (r.top + r.height / 2));
+                const op = Math.max(0.1, Math.min(1, 1 - dist / (window.innerHeight * 0.65)));
+                ql.forEach(l => l.style.opacity = op);
+            }
+        });
+
+        // LOAD
+        window.addEventListener('load', function () {
+            const pre = document.getElementById('preloader');
+            setTimeout(() => {
+                if (pre) { pre.classList.add('opacity-0'); setTimeout(() => pre.style.display = 'none', 500); }
+                ['hero-eyebrow','hero-title','hero-desc'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) { el.style.opacity='1'; el.style.transform='translateY(0)'; el.style.filter='none'; }
+                });
+                const b = document.getElementById('hero-btns');
+                if (b) { b.style.opacity='1'; b.style.transform='translateY(0)'; }
+            }, 80);
+        });
+
+        // INTERSECTION OBSERVER
+        document.addEventListener('DOMContentLoaded', function () {
+            const obs = new IntersectionObserver((entries, o) => {
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.remove('opacity-0','translate-y-10');
+                        e.target.classList.add('opacity-100','translate-y-0');
+                        o.unobserve(e.target);
+                    }
+                });
+            }, { threshold: 0.12 });
+            document.querySelectorAll('.reveal-item').forEach(el => obs.observe(el));
+        });
+
+        // MOBILE MENU
+        const ham = document.getElementById('hamburger');
+        const mm = document.getElementById('mobile-menu');
+        const io = document.getElementById('icon-open');
+        const ic = document.getElementById('icon-close');
+        let open = false;
+        ham && ham.addEventListener('click', () => {
+            open = !open;
+            if (open) {
+                mm.classList.remove('hidden');
+                requestAnimationFrame(() => { mm.style.opacity='1'; mm.style.transform='translateY(0)'; });
+                io.classList.add('hidden'); ic.classList.remove('hidden');
+            } else {
+                mm.style.opacity='0'; mm.style.transform='translateY(-8px)';
+                setTimeout(() => mm.classList.add('hidden'), 250);
+                io.classList.remove('hidden'); ic.classList.add('hidden');
+            }
+        });
+        document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => {
+            open = false; mm.style.opacity='0'; mm.style.transform='translateY(-8px)';
+            setTimeout(() => mm.classList.add('hidden'), 250);
+            io.classList.remove('hidden'); ic.classList.add('hidden');
+        }));
+
+        // PAGE TRANSITIONS
+        document.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', function (e) {
+                const h = this.getAttribute('href');
+                if (h && h !== '#' && !h.startsWith('http') && !h.startsWith('mailto') && !h.startsWith('tel') && !h.startsWith('#') && this.target !== '_blank') {
+                    e.preventDefault();
+                    const pre = document.getElementById('preloader');
+                    if (pre) { pre.style.display='flex'; pre.classList.remove('opacity-0'); }
+                    setTimeout(() => window.location.href = h, 350);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
