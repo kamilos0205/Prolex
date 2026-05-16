@@ -1,89 +1,5 @@
 const produktyBaza = [
     {
-        id: "szpachla-profi",
-        dzial: 1,
-        podkategoria: 2,
-        badge: "Bestseller",
-        nazwa: "Szpachla z rączką plastikową nierdzewna PROFI",
-        zdjecie: "assets/products/Szpachla z rączką plastikową.png",
-        wariantyTekst: "4 Warianty",
-        opisLista: [
-            "Część robocza wykonana z wysokiej jakości <strong>stali nierdzewnej</strong>.",
-            "Wygodny, ergonomiczny uchwyt wykonany z wytrzymałego tworzywa sztucznego."
-        ],
-        tabelaNaglowki: ["Kod towaru", "Rodzaj [mm]"],
-        tabelaWiersze: [
-            ["SZPP-40", "40"], ["SZPP-60", "60"], ["SZPP-80", "80"], ["SZPP-100", "100"]
-        ]
-    },
-    {
-        id: "szpachla-kwasoodporna",
-        dzial: 1,
-        podkategoria: 2,
-        badge: "Premium",
-        nazwa: "Szpachla z rączką plastikową ze stali nierdzewnej kwasoodpornej",
-        zdjecie: "assets/products/Szpachla z stali nierdzewnej kwasoodpornej.png",
-        wariantyTekst: "9 Wariantów",
-        opisLista: [
-            "Wykonana z wysokiej jakości <strong>stali nierdzewnej kwasoodpornej</strong>.",
-            "Trwały uchwyt z tworzywa sztucznego.",
-            "Idealna do prac wymagających odporności na agresywne środowisko chemiczne."
-        ],
-        tabelaNaglowki: ["Kod towaru", "Rodzaj [mm]"],
-        tabelaWiersze: [
-            ["SZPN-20", "20"],
-            ["SZPN-40", "40"],
-            ["SZPN-60", "60"],
-            ["SZPN-80", "80"],
-            ["SZPN-100", "100"],
-            ["super blacha PROFI", ""],
-            ["SZPNP-40", "40"],
-            ["SZPNP-60", "60"],
-            ["SZPNP-80", "80"],
-            ["SZPNP-100", "100"]
-        ]
-    },
-    {
-        id: "szpachla-kwas-duza",
-        dzial: 1,
-        podkategoria: 2,
-        nazwa: "Szpachla z rączką plastikową ze stali nierdzewnej kwasoodpornej",
-        zdjecie: "assets/products/Szpachla ze stali nierdzewnej kwasoodpornej1.png",
-        wariantyTekst: "6 Wariantów",
-        opisLista: [
-            "Wykonana z wysokiej jakości <strong>stali nierdzewnej kwasoodpornej</strong>.",
-            "Szeroki profil części roboczej idealny do dużych powierzchni.",
-            "Wygodny uchwyt zapewniający stabilne prowadzenie narzędzia."
-        ],
-        tabelaNaglowki: ["Kod towaru", "Rodzaj [mm]"],
-        tabelaWiersze: [
-            ["SZPG150", "150"],
-            ["SZPG200", "200"],
-            ["SZPG250", "250"],
-            ["SZPG350", "350"],
-            ["SZPG450", "450"],
-            ["SZPG600", "600"]
-        ]
-    },
-    {
-        id: "szpachle-japonki",
-        dzial: 1,
-        podkategoria: 2,
-        nazwa: "Szpachle japonki 5, 8, 10, 12 cm",
-        zdjecie: "assets/products/Szpachle japonki.png",
-        wariantyTekst: "2 Warianty",
-        opisLista: [
-            "Zestaw 4 szpachli o szerokościach: <strong>50, 80, 100 i 120 mm</strong>.",
-            "Dostępne w wersji z <strong>elastycznego tworzywa</strong> lub <strong>stali</strong>.",
-            "Przeznaczone do precyzyjnego szpachlowania małych powierzchni i trudno dostępnych miejsc."
-        ],
-        tabelaNaglowki: ["Kod towaru", "Rodzaj"],
-        tabelaWiersze: [
-            ["SZPJAP-P", "plastikowe"],
-            ["SZPJAP-M", "metalowe"]
-        ]
-    },
-    {
         id: "drabina-alu-1-cz",
         dzial: 1,
         podkategoria: 1,
@@ -434,5 +350,199 @@ const produktyBaza = [
             ["DRAALU-P-080", "800"],
             ["DRAALU-P-110", "1100"]
         ]
-    }
+    }, {
+        id: "szpachla-nierdzewna-al-gumowy",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Szpachla nierdzewna AL. 60 mm uchwyt gumowy",
+        zdjecie: "assets/products/Szpachla nierdzewna AL 60 mm uchwyt gumowy.png",
+        wariantyTekst: "6 Wariantów",
+        opisLista: [
+            "Solidna szpachla nierdzewna z aluminiowym profilem usztywniającym.",
+            "Wygodny, ergonomiczny uchwyt gumowy zapewniający pewny chwyt."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj [mm]"],
+        tabelaWiersze: [
+            ["SZPGP150", "150"],
+            ["SZPGP200", "200"],
+            ["SZPGP250", "250"],
+            ["SZPGP350", "350"],
+            ["SZPGP450", "450"],
+            ["SZPGP600", "600"]
+        ]
+    },
+    {
+        id: "szpachla-kwasoodporna-zeby",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Szpachla z rączką plastikową ze stali nierdzewnej kwasoodpornej",
+        zdjecie: "assets/products/Szpachla z rączką plastikową ze stali nierdzewnej kwasoodpornej.png",
+        wariantyTekst: "6 Wariantów",
+        opisLista: [
+            "Specjalistyczna wersja <strong>z zębami do kleju</strong>.",
+            "Wykonana z odpornej stali nierdzewnej kwasoodpornej.",
+            "Trwały, plastikowy uchwyt z otworem do zawieszenia."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj [mm]"],
+        tabelaWiersze: [
+            ["SZPZ150/-6", "150 / 6"],
+            ["SZPZ150/-8", "150 / 8"],
+            ["SZPZ150/10", "150 / 10"],
+            ["SZPZ250/-6", "250 / 6"],
+            ["SZPZ250/-8", "250 / 8"],
+            ["SZPZ250/10", "250 / 10"]
+        ]
+    },
+    {
+        id: "szpachle-fugi-silikonowe",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Szpachle do fug silikonowych",
+        zdjecie: "assets/products/Szpachle do fug silikonowych.png",
+        wariantyTekst: "Zestaw 4 szt.",
+        opisLista: [
+            "Praktyczny komplet elastycznych profili do fugowania.",
+            "Zapewniają równe i gładkie wykończenie spoin silikonowych o różnych kształtach."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Ilość szpachelek"],
+        tabelaWiersze: [
+            ["SZPFS4", "4"]
+        ]
+    },
+    {
+        id: "szpachelki-silikon-bez-obcinaka",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Szpachelki do silikonu bez obcinaka",
+        zdjecie: "assets/products/Szpachelki do silikonu bez obcinaka.png",
+        wariantyTekst: "Zestaw 4 szt.",
+        opisLista: [
+            "Zestaw ułatwiający profesjonalne nakładanie i profilowanie silikonu.",
+            "Różne rozmiary i kąty pozwalają na precyzyjne dopasowanie do każdej szczeliny."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Ilość szpachelek"],
+        tabelaWiersze: [
+            ["SZPFS4-G", "4"]
+        ]
+    },
+    {
+        id: "szpachelki-silikon-z-obcinakiem",
+        dzial: 1,
+        podkategoria: 2,
+        badge: "Polecane",
+        nazwa: "Szpachelki do silikonu z obcinakiem 3+1",
+        zdjecie: "assets/products/Szpachelki do silikonu z obcinakiem.png",
+        wariantyTekst: "Zestaw 4 szt.",
+        opisLista: [
+            "Kompleksowy zestaw narzędzi (3 profilowane szpachelki + 1 zintegrowany obcinak).",
+            "Wielofunkcyjny obcinak ułatwia usuwanie starych fug oraz precyzyjne otwieranie kartuszy."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Ilość szpachelek"],
+        tabelaWiersze: [
+            ["SZPFS3", "3 + 1"]
+        ]
+    },
+    {
+        id: "szpachla-do-fugowania",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Szpachla do fugowania",
+        zdjecie: "assets/products/Szpachla do fugowania.png",
+        wariantyTekst: "4 Warianty",
+        opisLista: [
+            "Klasyczna szpachla z czarną gumą, idealna do dokładnego wypełniania spoin.",
+            "Wyposażona w solidny, ergonomiczny uchwyt drewniany."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj [mm]"],
+        tabelaWiersze: [
+            ["SZPF150", "150"],
+            ["SZPF200", "200"],
+            ["SZPF250", "250"],
+            ["SZPF300", "300"]
+        ]
+    },
+    {
+        id: "szpachla-profi",
+        dzial: 1,
+        podkategoria: 2,
+        badge: "Bestseller",
+        nazwa: "Szpachla z rączką plastikową nierdzewna PROFI",
+        zdjecie: "assets/products/Szpachla z rączką plastikową.png",
+        wariantyTekst: "4 Warianty",
+        opisLista: [
+            "Część robocza wykonana z wysokiej jakości <strong>stali nierdzewnej</strong>.",
+            "Wygodny, ergonomiczny uchwyt wykonany z wytrzymałego tworzywa sztucznego."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj [mm]"],
+        tabelaWiersze: [
+            ["SZPP-40", "40"], ["SZPP-60", "60"], ["SZPP-80", "80"], ["SZPP-100", "100"]
+        ]
+    },
+    {
+        id: "szpachla-kwasoodporna",
+        dzial: 1,
+        podkategoria: 2,
+        badge: "Premium",
+        nazwa: "Szpachla z rączką plastikową ze stali nierdzewnej kwasoodpornej",
+        zdjecie: "assets/products/Szpachla z stali nierdzewnej kwasoodpornej.png",
+        wariantyTekst: "9 Wariantów",
+        opisLista: [
+            "Wykonana z wysokiej jakości <strong>stali nierdzewnej kwasoodpornej</strong>.",
+            "Trwały uchwyt z tworzywa sztucznego.",
+            "Idealna do prac wymagających odporności na agresywne środowisko chemiczne."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj [mm]"],
+        tabelaWiersze: [
+            ["SZPN-20", "20"],
+            ["SZPN-40", "40"],
+            ["SZPN-60", "60"],
+            ["SZPN-80", "80"],
+            ["SZPN-100", "100"],
+            ["super blacha PROFI", ""],
+            ["SZPNP-40", "40"],
+            ["SZPNP-60", "60"],
+            ["SZPNP-80", "80"],
+            ["SZPNP-100", "100"]
+        ]
+    },
+    {
+        id: "szpachla-kwas-duza",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Szpachla z rączką plastikową ze stali nierdzewnej kwasoodpornej",
+        zdjecie: "assets/products/Szpachla ze stali nierdzewnej kwasoodpornej1.png",
+        wariantyTekst: "6 Wariantów",
+        opisLista: [
+            "Wykonana z wysokiej jakości <strong>stali nierdzewnej kwasoodpornej</strong>.",
+            "Szeroki profil części roboczej idealny do dużych powierzchni.",
+            "Wygodny uchwyt zapewniający stabilne prowadzenie narzędzia."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj [mm]"],
+        tabelaWiersze: [
+            ["SZPG150", "150"],
+            ["SZPG200", "200"],
+            ["SZPG250", "250"],
+            ["SZPG350", "350"],
+            ["SZPG450", "450"],
+            ["SZPG600", "600"]
+        ]
+    },
+    {
+        id: "szpachle-japonki",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Szpachle japonki 5, 8, 10, 12 cm",
+        zdjecie: "assets/products/Szpachle japonki.png",
+        wariantyTekst: "2 Warianty",
+        opisLista: [
+            "Zestaw 4 szpachli o szerokościach: <strong>50, 80, 100 i 120 mm</strong>.",
+            "Dostępne w wersji z <strong>elastycznego tworzywa</strong> lub <strong>stali</strong>.",
+            "Przeznaczone do precyzyjnego szpachlowania małych powierzchni i trudno dostępnych miejsc."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj"],
+        tabelaWiersze: [
+            ["SZPJAP-P", "plastikowe"],
+            ["SZPJAP-M", "metalowe"]
+        ]
+    },
 ];
