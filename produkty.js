@@ -545,4 +545,473 @@ const produktyBaza = [
             ["SZPJAP-M", "metalowe"]
         ]
     },
+    {
+        id: "szpachla-6w1",
+        dzial: 1,
+        podkategoria: 2,
+        badge: "Polecane",
+        nazwa: "Szpachla WIELOFUNKCYJNA 6w1",
+        zdjecie: "assets/products/Szpachla WIELOFUNKCYJNA 6w1.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Narzędzie łączące 6 funkcji w jednym: skrobak, czyszczenie wałków, otwieranie butelek, wyciąganie gwoździ, podważanie puszek, czyszczenie powierzchni wypukłych/wklęsłych.",
+            "Wyposażona w ergonomiczny uchwyt dwukomponentowy (2K)."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj"],
+        tabelaWiersze: [
+            ["SZPW-6", "6 w 1"]
+        ]
+    },
+    {
+        id: "kielnia-trapezowa",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Kielnia trapezowa",
+        zdjecie: "assets/products/Kielnia trapezowa.png",
+        wariantyTekst: "4 Warianty",
+        opisLista: [
+            "Niezbędne narzędzie murarskie i sztukatorskie z klasycznym, drewnianym uchwytem.",
+            "Dostępne wersje ze <strong>stali węglowej</strong> oraz <strong>stali nierdzewnej</strong>."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj [mm]"],
+        tabelaWiersze: [
+            ["KIE-TZ120", "120-130"],
+            ["KIE-TZ190", "180-190"],
+            ["ze stali nierdzewnej", ""],
+            ["KIE-TZN130", "130"],
+            ["KIE-TZN180", "180"]
+        ]
+    },
+    {
+        id: "kielnia-sztukatorska-nierdzewna",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Kielnia sztukatorska nierdzewna",
+        zdjecie: "assets/products/Kielnia sztukatorska nierdzewna.png",
+        wariantyTekst: "3 Warianty",
+        opisLista: [
+            "Kielnia przeznaczona do precyzyjnych prac wykończeniowych i sztukatorskich.",
+            "Część robocza wykonana z wysokiej jakości stali nierdzewnej.",
+            "Wygodny, profilowany uchwyt drewniany."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj [mm]"],
+        tabelaWiersze: [
+            ["KIE-SZTN-50", "50"],
+            ["KIE-SZTN-80", "80"],
+            ["KIE-SZTN-100", "100"]
+        ]
+    },
+    {
+        id: "czerpak-murarski",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Czerpak murarski",
+        zdjecie: "assets/products/Czerpak murarski.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Solidny, metalowy czerpak niezbędny na każdej budowie.",
+            "Ułatwia nabieranie i precyzyjne nakładanie zaprawy murarskiej.",
+            "Posiada wytrzymały drewniany uchwyt z metalowym wzmocnieniem."
+        ],
+        tabelaNaglowki: ["Kod towaru"],
+        tabelaWiersze: [
+            ["CZERP-M"]
+        ]
+    },
+    {
+        id: "kielnia-trapez-nierdzewna-gumowy-profi",
+        dzial: 1,
+        podkategoria: 2,
+        badge: "Premium",
+        nazwa: "Kielnia trapez nierdzewna uchwyt gumowy PROFI",
+        zdjecie: "assets/products/Kielnia trapez nierdzewna uchwyt gumowy PROFI.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Profesjonalna kielnia trapezowa wykonana ze stali nierdzewnej.",
+            "Wyposażona w innowacyjny uchwyt gumowy z możliwością zawieszenia.",
+            "Gwarantuje pewny chwyt i komfort nawet podczas długotrwałej pracy."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj [mm]"],
+        tabelaWiersze: [
+            ["KIE-TZN180-PRG", "180"]
+        ]
+    },
+    {
+        id: "kielnia-sztukatorska-waska-koci-jezyk",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Kielnia sztukatorska wąska Koci Język",
+        zdjecie: "assets/products/Kielnia sztukatorska waska Koci Jezyk.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Wąska kielnia typu 'koci język', idealna do spoinowania i miejsc trudnodostępnych.",
+            "Ergonomiczny, drewniany uchwyt i wyprofilowany kształt blachy."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Dł. [mm]"],
+        tabelaWiersze: [
+            ["KIE-SZT-KJW", "160"]
+        ]
+    },
+    {
+        id: "czerpak-gospodarczy-5l",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Czerpak gospodarczy 5L",
+        zdjecie: "assets/products/Czerpak gospodarczy 5L.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Pojemny i uniwersalny czerpak o pojemności 5 litrów.",
+            "Wykonany z wytrzymałej blachy ocynkowanej, odpornej na uszkodzenia mechaniczne.",
+            "Praktyczny uchwyt rurkowy."
+        ],
+        tabelaNaglowki: ["Kod towaru"],
+        tabelaWiersze: [
+            ["CZERP-G"]
+        ]
+    },
+    {
+        id: "kielnia-trapez-nierdzewna-drewniany-profi-fsc",
+        dzial: 1,
+        podkategoria: 2,
+        badge: "PROFI",
+        nazwa: "Kielnia trapez nierdzewna uchwyt drewniany PROFI-FSC",
+        zdjecie: "assets/products/Kielnia trapez nierdzewna uchwyt drewniany PROFI-FSC.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Kielnia z wysokogatunkowej stali nierdzewnej dla wymagających rzemieślników.",
+            "Wyposażona w certyfikowany uchwyt drewniany FSC."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj [mm]"],
+        tabelaWiersze: [
+            ["KIE-TZN180-PR", "180"]
+        ]
+    },
+    {
+        id: "kielnia-sztukatorska-zewnetrzna",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Kielnia sztukatorska zewnętrzna",
+        zdjecie: "assets/products/Kielnia sztukatorska zewnetrzna.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Specjalistyczne narzędzie przeznaczone do precyzyjnego formowania narożników zewnętrznych.",
+            "Ułatwia i przyspiesza prace tynkarskie i wykończeniowe."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj"],
+        tabelaWiersze: [
+            ["KIE-SZTNZ", "zewnętrzna"]
+        ]
+    },
+    {
+        id: "skrobak-malarski",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Skrobak malarski",
+        zdjecie: "assets/products/Skrobak malarski.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Niezawodne narzędzie do zdzierania starych powłok malarskich, tapet i zanieczyszczeń.",
+            "Posiada sztywną klingę i wygodny profilowany uchwyt z tworzywa."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj [mm]"],
+        tabelaWiersze: [
+            ["SKROBAK-110", "110"]
+        ]
+    },
+    {
+        id: "skrobak-z-wymiennym-ostrzem",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Skrobak z wymiennym ostrzem",
+        zdjecie: "assets/products/Skrobak z wymiennym ostrzem.png",
+        wariantyTekst: "2 Warianty",
+        opisLista: [
+            "Solidny skrobak z uchwytem z tworzywa sztucznego.",
+            "Posiada system łatwej wymiany ostrza."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj"],
+        tabelaWiersze: [
+            ["SKRW-OST", "ostrze do skrobaka"],
+            ["SKRWO", "skrobak z wymiennym ostrzem"]
+        ]
+    },
+    {
+        id: "skrobak-do-fug",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Skrobak do fug",
+        zdjecie: "assets/products/Skrobak do fug.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Poręczne narzędzie do szybkiego usuwania starych spoin między płytkami.",
+            "Wyposażony w zębate ostrze ułatwiające pracę."
+        ],
+        tabelaNaglowki: ["Kod towaru"],
+        tabelaWiersze: [
+            ["SKR-FUG"]
+        ]
+    },
+    {
+        id: "skrobak-do-fug-wolframowy",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Skrobak do fug wolframowy",
+        zdjecie: "assets/products/Skrobak do fug wolframowy.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Skrobak wyposażony w bardzo twarde ostrze z nasypem wolframowym.",
+            "Zaprojektowany do usuwania najtwardszych i zaschniętych zapraw fugowych."
+        ],
+        tabelaNaglowki: ["Kod towaru"],
+        tabelaWiersze: [
+            ["SKR-FUG-W"]
+        ]
+    },
+    {
+        id: "skrobak-do-szyb",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Skrobak do szyb",
+        zdjecie: "assets/products/Skrobak do szyb.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Lekki skrobak przeznaczony do czyszczenia szyb i delikatnych powierzchni płaskich.",
+            "Szerokość ostrza wynosi 60 mm."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Szerokość ostrza [mm]"],
+        tabelaWiersze: [
+            ["SKR-SZ", "60"]
+        ]
+    },
+    {
+        id: "skrobak-z-wysuwanym-ostrzem",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Skrobak z wysuwanym ostrzem metalowym",
+        zdjecie: "assets/products/Skrobak z wysuwanym ostrzem metalowym.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Kompaktowy skrobak z bezpiecznym, suwakowym systemem chowania ostrza.",
+            "Obudowa z tworzywa sztucznego, szerokość ostrza to 39,50 mm."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Szerokość ostrza [mm]"],
+        tabelaWiersze: [
+            ["SKRW", "39,50"]
+        ]
+    },
+    {
+        id: "kielnia-trojkatna",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Kielnia trójkątna",
+        zdjecie: "assets/products/Kielnia trojkatna.png",
+        wariantyTekst: "5 Wariantów",
+        opisLista: [
+            "Klasyczna kielnia trójkątna, niezastąpiona przy pracach murarskich.",
+            "Dostępna w wersji ze stali węglowej oraz nierdzewnej."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj [mm]"],
+        tabelaWiersze: [
+            ["KIE-TK180", "180"],
+            ["KIE-TK200", "200"],
+            ["KIE-TK220", "220"],
+            ["ze stali nierdzewnej", ""],
+            ["KIE-TKN180", "180"],
+            ["KIE-TKN200", "200"]
+        ]
+    },
+    {
+        id: "kielnia-sztukatorska-wewnetrzna",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Kielnia sztukatorska wewnętrzna",
+        zdjecie: "assets/products/Kielnia sztukatorska wewnetrzna.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Kielnia kątowa, profilowana pod kątem 90 stopni.",
+            "Idealna do równego wykańczania narożników wewnętrznych."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj"],
+        tabelaWiersze: [
+            ["KIE-SZTNW", "wewnętrzna"]
+        ]
+    },
+    {
+        id: "skrobak-malarski-drewniana-raczka",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Skrobak malarski",
+        zdjecie: "assets/products/Skrobak malarski drewniana raczka.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Sztywny skrobak malarski ze wzmocnioną częścią roboczą.",
+            "Posiada klasyczną, wygodną drewnianą rączkę."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj"],
+        tabelaWiersze: [
+            ["SKR-RDREW", "drewniana rączka"]
+        ]
+    },
+    {
+        id: "kielnia-fugowa",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Kielnia fugowa",
+        zdjecie: "assets/products/Kielnia fugowa.png",
+        wariantyTekst: "3 Warianty",
+        opisLista: [
+            "Wąska kielnia (spoinówka) przeznaczona do fugowania cegły i klinkieru.",
+            "Część robocza wykonana ze stali sprężystej."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Rodzaj [mm]"],
+        tabelaWiersze: [
+            ["KIE-FUG-8", "8"],
+            ["KIE-FUG10", "10"],
+            ["KIE-FUG12", "12"]
+        ]
+    },
+    {
+        id: "paca-kwasoodporna-zeby-plastik",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Paca ze stali nierdzewnej kwasoodpornej z zębami (plastikowa rączka)",
+        zdjecie: "assets/products/Paca ze stali nierdzewnej kwasoodpornej z zebami plastikowa raczka.png",
+        wariantyTekst: "5 Wariantów",
+        opisLista: [
+            "Paca do nakładania i rozprowadzania klejów oraz zapraw.",
+            "Wykonana ze stali nierdzewnej kwasoodpornej. Zęby po dwóch stronach blachy."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Wymiary [mm]"],
+        tabelaWiersze: [
+            ["PACZN270/04", "130 x 270 / 4"],
+            ["PACZN270/06", "130 x 270 / 6"],
+            ["PACZN270/08", "130 x 270 / 8"],
+            ["PACZN270/10", "130 x 270 / 10"],
+            ["PACZN270/12", "130 x 270 / 12"]
+        ]
+    },
+    {
+        id: "paca-kwasoodporna-zeby-drewno",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Paca ze stali nierdzewnej kwasoodpornej z zębami (drewniana rączka)",
+        zdjecie: "assets/products/Paca ze stali nierdzewnej kwasoodpornej z zebami drewniana raczka.png",
+        wariantyTekst: "8 Wariantów",
+        opisLista: [
+            "Paca do kleju wykonana z najwyższej jakości stali kwasoodpornej.",
+            "Wydłużone blachy (380, 480 i 580 mm) idealne do dużych formatów płytek.",
+            "Klasyczna drewniana rączka."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Wymiary [mm]"],
+        tabelaWiersze: [
+            ["PACZN380/06", "130 x 380 / 6"],
+            ["PACZN380/08", "130 x 380 / 8"],
+            ["PACZN380/10", "130 x 380 / 10"],
+            ["PACZN480/06", "130 x 480 / 6"],
+            ["PACZN480/08", "130 x 480 / 8"],
+            ["PACZN480/10", "130 x 480 / 10"],
+            ["PACZN580/06", "130 x 580 / 6"],
+            ["PACZN580/08", "130 x 580 / 8"]
+        ]
+    },
+    {
+        id: "paca-plastikowa-gladka",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Paca plastikowa gładka",
+        zdjecie: "assets/products/Paca plastikowa gladka.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Lekka paca z tworzywa sztucznego z uchwytem.",
+            "Sprawdza się przy nakładaniu gładzi i zapraw cienkowarstwowych."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Wymiary [mm]"],
+        tabelaWiersze: [
+            ["PACPLGŁ", "130 x 270"]
+        ]
+    },
+    {
+        id: "paca-styropianowa-twarda",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Paca styropianowa TWARDA",
+        zdjecie: "assets/products/Paca styropianowa TWARDA.png",
+        wariantyTekst: "6 Wariantów",
+        opisLista: [
+            "Zacieraczka wykonana z twardego, zbitego styropianu EPS.",
+            "Zwiększona żywotność, idealna do zacierania tynków."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Wymiary [mm]"],
+        tabelaWiersze: [
+            ["PACST-270", "130 x 270"],
+            ["PACST-320", "160 x 320"],
+            ["PACST-450", "130 x 450"],
+            ["PACST-600", "130 x 600"],
+            ["PACST-750", "130 x 750"],
+            ["PACST-900", "130 x 900"]
+        ]
+    },
+    {
+        id: "paca-plastikowa-z-filcem",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Paca plastikowa z filcem",
+        zdjecie: "assets/products/Paca plastikowa z filcem.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Paca z blatem z tworzywa sztucznego, podbita chłonnym filcem.",
+            "Używana do wygładzania i zacierania tynków gipsowych."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Wymiary [mm]"],
+        tabelaWiersze: [
+            ["PACPLFIL", "130 x 270"]
+        ]
+    },
+    {
+        id: "paca-plastikowa-z-filcem-8mm",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Paca plastikowa z filcem 8 mm",
+        zdjecie: "assets/products/Paca plastikowa z filcem 8 mm.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Paca tynkarska podbita grubym, 8-milimetrowym filcem technicznym."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Wymiary [mm]"],
+        tabelaWiersze: [
+            ["PACPLFIL/8", "140 x 280"]
+        ]
+    },
+    {
+        id: "paca-styropianowa-z-filcem",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Paca styropianowa z filcem",
+        zdjecie: "assets/products/Paca styropianowa z filcem.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Ultra lekka paca z twardego styropianu podklejona filcem.",
+            "Ułatwia długotrwałe zacieranie powierzchni."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Wymiary [mm]"],
+        tabelaWiersze: [
+            ["PACS-270+F", "130 x 270"]
+        ]
+    },
+    {
+        id: "paca-kwasoodporna-gladka",
+        dzial: 1,
+        podkategoria: 2,
+        nazwa: "Paca ze stali nierdzewnej kwasoodpornej gładka",
+        zdjecie: "assets/products/Paca ze stali nierdzewnej kwasoodpornej gladka.png",
+        wariantyTekst: "1 Wariant",
+        opisLista: [
+            "Gładka blacha z elastycznej, kwasoodpornej stali.",
+            "Profilowana rączka z tworzywa sztucznego."
+        ],
+        tabelaNaglowki: ["Kod towaru", "Wymiary [mm]"],
+        tabelaWiersze: [
+            ["PACGN270", "130 x 270"]
+        ]
+    }
 ];
